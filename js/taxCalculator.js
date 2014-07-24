@@ -36,7 +36,7 @@ taxCalculator = {
 	* Add updae UI with message
 	*/
 	updateStatment : function(message){
-		$('.taxStatment').text(message);	
+		$('.taxStatment').text(message);
 	},
 	/*
 	* Get donation amount from BBIS form inputs
@@ -55,7 +55,6 @@ taxCalculator = {
 			var message = taxCalculator.message(amount);
 			taxCalculator.updateSavings(dollarAmount);
 			taxCalculator.updateStatment(message);
-			
 		});
 	},
 	/*
@@ -112,8 +111,9 @@ taxCalculator = {
 	message : function(floatInt){
 		// compare a floating point value to ranges and return a message
 		var amount = parseFloat(floatInt);
+		
 		// always return defaul message for NaN or negative values, I don't like to return undefined.
-		if(amount < 0){
+		if(amount <= 0 || floatInt.length === 0){	
 			return taxCalculator.model.data[0]['message'];
 		}
 		else{
