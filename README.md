@@ -1,4 +1,4 @@
-![Tax Calculator image](https://raw.githubusercontent.com/harrisonde/chalkbox/master/public/images/ "Calculator")
+![Tax Calculator image](https://raw.githubusercontent.com/LindaBrennan/UWT-Tax-Calculator/master/taxCalculator.png "Calculator")
 
 # Tax Calculator 
 The Tax Calculator customization is a custom javascript plugin that runs with a default BBIS donation form. 
