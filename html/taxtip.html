@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="../js/vendor/jquery.js"></script>
+	<!--The tax tip calculator js, add this script as a method in site global -->
+	<script type="text/javascript" src="../js/taxCalculator.js"></script>
+</head>
+<body>
+	<!-- Run the tax tip calculator at startup, place the following in a UT&I Part -->
+	
+	<h1>Tax Calculator - Example to run as localhost</h1>
+	<h2>
+		The Tax Calculator customization is a custom javascript plugin that runs with a default BBIS donation form. 
+	</h2>
+	<p>
+	The Tax Calculator customization is driven from management parameter that allows the BBIS administrator to provide the federal tax and provincial tax rates as arguments. This will allow the customization calculation to be updated each year the tax rates change. The language options will also be passed in as arguments too.
+	</p>
+	<!-- Default BBIS donation form inputs -->
+	<fieldset>
+	<p>Default BBIS Donation input</p>
+	<label>Default donation $ amount</label>
+	<input name="PC1222$txtAmount" type="text" maxlength="10" id="PC1222_txtAmount" class="BBFormTextbox DonationTextboxNarrow">
+	</fieldset>
+	<br>
+	<fieldset>
+	<!-- html element to be placed onto the page with a donation form -->
+	 <div id="taxCalculator"></div>
+	</fieldset> 
+	 <script>
+		jQuery('document').ready( function(){
+			// expected arguments are Federal Tax Rate + Provincial Tax Rate
+			taxCalculator.init(taxrate = {
+				Fed_max : 29.00, 
+				Fed_min : 15.00, 
+				Prov_max : 11.16, 
+				Prov_min : 5.05,
+				Gift_ceil : 200.00
+			},
+			filelocation = {
+				bbisDocumentURL : '../js/taxCalculatorLibrary.txt'
+			}
+		    );
+		});
+	</script>
+</body>
+</html>

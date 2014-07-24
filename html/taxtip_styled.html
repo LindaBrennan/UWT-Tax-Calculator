@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- The following styles will need to be inserted into BBIS style sheet -->
+	<style>
+		#taxCalculator{
+			background: #4375ca; /* Old browsers */
+			/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+			background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNDM3NWNhIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzJkNGY4YyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+			background: -moz-linear-gradient(-45deg,  #4375ca 0%, #2d4f8c 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#4375ca), color-stop(100%,#2d4f8c)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(-45deg,  #4375ca 0%,#2d4f8c 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(-45deg,  #4375ca 0%,#2d4f8c 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(-45deg,  #4375ca 0%,#2d4f8c 100%); /* IE10+ */
+			background: linear-gradient(135deg,  #4375ca 0%,#2d4f8c 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4375ca', endColorstr='#2d4f8c',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */	
+			/* borders */
+			border: 1px solid #605f64;
+			-webkit-border-bottom-right-radius: 13px;
+			-moz-border-radius-bottomright: 13px;
+			border-bottom-right-radius: 13px;
+			/* Structure */
+			height: 245px;
+			padding:23px;
+			width: 286px;
+			
+			/* Do not import to BBIS */
+			font-family: "Avenir LT W01 55 Roman",Arial,"Helvetica Neue",Helvetica,sans-serif;
+		}
+		#taxCalculator .taxSavings{
+			color: #47b1e3; 
+			font-size: 3.5rem;
+			font-weight: bold;
+			word-wrap: break-word;
+		}
+		#taxCalculator .taxSavings:before{
+			/* This is how we show our $ */
+			content: '$';
+		}
+		#taxCalculator .taxSavings:after{
+			content: ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .";
+			color: #f8ffff;
+			display: block;
+			font-size: 1rem;
+			width: 100%;
+			/* hide the '. . . ' if line wraps */
+			overflow: hidden;
+			white-space: nowrap;
+		}
+		#taxCalculator .taxStatment{
+			color: #f8ffff;
+			padding-top:15px;
+		}
+	</style>
+	
+	<script type="text/javascript" src="../js/vendor/jquery.js"></script>
+	<!--The tax tip calculator js, add this script as a method in site global -->
+	<script type="text/javascript" src="../js/taxCalculator.js"></script>
+</head>
+<body>
+	<!-- Run the tax tip calculator at startup, place the following in a UT&I Part -->
+	
+	<h1>Tax Calculator - Example to run as localhost</h1>
+	<h2>
+		The Tax Calculator customization is a custom javascript plugin that runs with a default BBIS donation form. 
+	</h2>
+	<p>
+	The Tax Calculator customization is driven from management parameter that allows the BBIS administrator to provide the federal tax and provincial tax rates as arguments. This will allow the customization calculation to be updated each year the tax rates change. The language options will also be passed in as arguments too.
+	</p>
+	<!-- Default BBIS donation form inputs -->
+	<fieldset>
+	<p>Default BBIS Donation input</p>
+	<label>Default donation $ amount</label>
+	<input name="PC1222$txtAmount" type="text" maxlength="10" id="PC1222_txtAmount" class="BBFormTextbox DonationTextboxNarrow">
+	</fieldset>
+	<br>
+	<!-- html element to be placed onto the page with a donation form -->
+	 <div id="taxCalculator"></div>
+	 <script>
+		jQuery('document').ready( function(){
+			// expected arguments are Federal Tax Rate + Provincial Tax Rate
+			taxCalculator.init(taxrate = {
+				Fed_max : 29.00, 
+				Fed_min : 15.00, 
+				Prov_max : 11.16, 
+				Prov_min : 5.05,
+				Gift_ceil : 200.00
+			},
+			filelocation = {
+				bbisDocumentURL : '../js/taxCalculatorLibrary.txt'
+			}
+		    );
+		});
+	</script>
+</body>
+</html>
