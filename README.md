@@ -41,15 +41,17 @@ Each item or object in the library requires a message, rangeMax, rangeMin. All r
 ### Library
 The location of said library in the BBIS Documents part must be provided as an argument to the custom script at runtime. The user must upload the the JSON file to the BBIS Documents part. Once the file is uploaded, the file location must be passed.
 
+example:
+
+jQuery('document').ready( function(){
+    filelocation = {
+        bbisDocumentURL : 'taxCalculatorLibrary.txt'
+    }	
+});
+
 *    Upload the “taxCalculatorLibrary.txt” to a BBIS Document Part
 *    Make note of the URL
 *    Provide the URL to the script as an argument at runtime 
-
-	jQuery('document').ready( function(){
-	    filelocation = {
-	        bbisDocumentURL : 'taxCalculatorLibrary.txt'
-	    }	
-	});
 	
 ### Tax Tip
 The script must know the tax rates to calculate the total cost of the gift and display the dollar amount. The user must provide the Federal Max, Federal Min, Providence Max, Providence Min and Gift Ceiling as argument at runtime.  
