@@ -49,10 +49,10 @@ The location of said library in the BBIS Documents part must be provided as an a
     jQuery('document').ready( function(){
 	    filelocation = {
 		    bbisDocumentURL : 'taxCalculatorLibrary.txt'
-	    });
+	    }
     });
-
-
+    
+    
 ### Tax Tip
 The script must know the tax rates to calculate the total cost of the gift and display the dollar amount. The user must provide the Federal Max, Federal Min, Providence Max, Providence Min and Gift Ceiling as argument at runtime.  
 
